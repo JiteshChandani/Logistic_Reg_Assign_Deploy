@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h2>Affair Prediction</h2>
+        <ol>
+           <li> Rate_marriage </li>
+                 <ul>
+                    <li> 1 = Very Poor </li>
+                    <li> 5 = Very Good </li>
+                 </ul>
+
+           <li> Religious </li>
+                 <ul>
+                    <li> 1 = Not Religious </li>
+                    <li> 4 = Strongly Religious</li>
+                 </ul>
+
+           <li> Education </li>
+                 <ul>
+                    <li> 9 = Grade School </li>
+                    <li> 12 = High School</li>
+                    <li> 14 = Some College</li>
+                    <li> 16 = College Graduate</li>
+                    <li> 17 = Some Graduate School</li>
+                    <li> 20 = Advanced Degree </li>
+                 </ul>
+
+           <li> Occupation </li>
+                 <ul>
+                    <li> 1 = Student </li>
+                    <li> 2 = Farming/Semi-Skilled/Unskilled</li>
+                    <li> 3 = White Collar</li>
+                    <li> 4 = Teacher/Nurse/Writer/Technician/Skilled</li>
+                    <li> 5 = Managerial/Business</li>
+                    <li> 6 = Professional with Advanced Degree </li>
+                 </ul>
+
+
+
+          <li> The Husband Occupation would be same as above occupation </li>
+
+
+       </ol>
+
+     <!-- Main Input For Receiving Query to our ML -->
+
+    <form action="{{ url_for('predict')}}"method="post">
+
+        <input type="text" name="Intercept" id="Intercept" placeholder="Intercept">
+            <input type="text" name="occ_2" id="occ_2" placeholder="occ_2">
+            <input type="text" name="occ_3" id="occ_3" placeholder="occ_3">
+            <input type="text" name="occ_4" id="occ_4" placeholder="occ_4">
+            <input type="text" name="occ_5" id="occ_5" placeholder="occ_5">
+            <input type="text" name="occ_6" id="occ_6" placeholder="occ_6">
+            <input type="text" name="occ_husb_2" id="occ_husb_2" placeholder="occ_husb_2">
+            <input type="text" name="occ_husb_3" id="occ_husb_3" placeholder="occ_husb_3">
+            <input type="text" name="occ_husb_4" id="occ_husb_4" placeholder="occ_husb_4">
+            <input type="text" name="occ_husb_5" id="occ_husb_5" placeholder="occ_husb_5">
+            <input type="text" name="occ_husb_6" id="occ_husb_6" placeholder="occ_husb_6">
+            <input type="text" name="rate_marriage" id="rate_marriage" placeholder="rate_marriage">
+            <input type="text" name="age" id="age" placeholder="age">
+            <input type="text" name="yrs_married" id="yrs_married" placeholder="yrs_married">
+            <input type="text" name="children" id="children" placeholder="children">
+            <input type="text" name="religious" id="religious" placeholder="religious">
+            <input type="text" name="educ" id="educ" placeholder="educ" step = "any">
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
